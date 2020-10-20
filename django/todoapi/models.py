@@ -25,3 +25,11 @@ class Recepee(models.Model):
     # Define what to output when the model is printed as a string.
     def __str__(self):
         return self.title
+
+
+class ShopItem(models.Model):
+
+    name = models.CharField(max_length=60)
+    description = models.CharField(max_length=255)
+    town = models.CharField(max_length=50)
+    zipCode = models.CharField(max_length=5)
