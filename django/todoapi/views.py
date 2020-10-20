@@ -1,8 +1,9 @@
-from .models import Recepee
-from .serializers import TaskSerializer
+from .models import Recepee, ShopItem
+from .serializers import TaskSerializer, ShopItemSerializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import viewsets
 
 class RecepeeList(APIView):
     """
@@ -15,3 +16,8 @@ class RecepeeList(APIView):
         tasks = Recepee.objects.all()
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
+
+class ShopItemView(viewsets.ModelViewSet):
+
+    serializer_class = ShopItemSerializer
+    queryset = ShopItem.objects.all()
