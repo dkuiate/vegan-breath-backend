@@ -17,5 +17,6 @@ urlpatterns = [
     path('',include(router.urls)),
     path('auth/login/', obtain_jwt_token),
     path('auth/refresh-token/', refresh_jwt_token),
+    path('', include('vegan.urls', namespace='vegan')),
 
 ]
