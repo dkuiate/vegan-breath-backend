@@ -1,8 +1,57 @@
 #from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from rest_framework.response import Response
+from .serializers import RecetteSerializer, RestaurantSerializer,ShopSerializer
 from .models import Contact, Recette, Restaurant, Shop
+from rest_framework.decorators import api_view
+from rest_framework import status
+from django.http import HttpResponse
 
+
+#Recette
+@api_view(['GET'])
+def recetteList(request):
+  recette = Recette.objects.all()
+  serializer = RecetteSerializer(recette, many=True)
+  return Response(serializer.data, status = status.HTTP_200_OK)
+
+@api_view(['POST'])
+def createRecette(request):
+  serializer = RecetteSerializer(data = request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data, status = status.HTTP_201_CREATED)
+  return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
+#Restaurant
+@api_view(['GET'])
+def restaurantList(request):
+  restaurants = Restaurant.objects.all()
+  serializer = RestaurantSerializer(restaurants, many=True)
+  return Response(serializer.data, status = status.HTTP_200_OK) 
+
+@api_view(['POST'])
+def createRestaurant(request):
+  serializer = RestaurantSerializer(data = request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data, status = status.HTTP_201_CREATED) 
+  return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+#Shop 
+@api_view(['GET'])
+def shopList(request):
+  shops =   Shop.objects.all()
+  serializer = ShopSerializer(shops, many=True)
+  return Response(serializer.data, status = status.HTTP_200_OK)      
+
+@api_view(['POST'])
+def createShop(request):
+  serializer = ShopSerializer(data = request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return Response(serializer.data, status = status.HTTP_201_CREATED) 
+  return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 
 # Create your views here.
@@ -21,10 +70,10 @@ def index(request):
       #  'recette_list': recettes,
       # 'restaurant_list': restaurants,
       #  'shop_list': shops,
-   }
+  }
 
   return HttpResponse(message)
-     #todo plus vue
+    #todo plus vue
 
 
 

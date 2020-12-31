@@ -1,15 +1,15 @@
 from django.urls import path
 
-from vegan import views
+from  vegan import views
 
 
 app_name = 'vegan'
 
 urlpatterns = [
-    path('', views.index , name='index'),
-    path('recettes', views.listingRecette , name = 'recettes'),
-    path('restaurants', views.listingRestaurant , name = 'restaurants'),
-    path('shops', views.listingShop , name = 'shops'),
-    
-
+    path('restaurants', views.restaurantList , name = 'restaurants'),
+    path('addRestaurants', views.createRestaurant , name = 'create_restaurants'),
+    path('recettes', views.recetteList, name = 'recettes'),
+    path('addRecette', views.createRecette , name = 'create_recette'),
+    path('shops', views.shopList , name = 'shops'),
+    path('addShop', views.createShop , name = 'create_shop'),
 ]

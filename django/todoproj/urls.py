@@ -6,17 +6,16 @@ from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 from todoapi import views as todoapi_views
 
-router = routers.DefaultRouter()
-router.register(
-    'shop-item', ShopItemView, basename = 'shop-item'
-)
+#router = routers.DefaultRouter()
+#router.register(
+#    'shop-item', ShopItemView, basename = 'shop-item'
+#)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
-    path('api/task/', todoapi_views.RecepeeList.as_view(), name='task-list'),
-    path('',include(router.urls)),
-    path('auth/login/', obtain_jwt_token),
-    path('auth/refresh-token/', refresh_jwt_token),
-    path('', include('vegan.urls', namespace='vegan')),
-
+    #path('api-auth/', include('rest_framework.urls')),
+    #path('api/task/', todoapi_views.RecepeeList.as_view(), name='task-list'),
+    #path('',include(router.urls)),
+    #path('auth/login/', obtain_jwt_token),
+    #path('auth/refresh-token/', refresh_jwt_token),
+    path('api/vegan/', include('vegan.urls', namespace='vegan')),
 ]
