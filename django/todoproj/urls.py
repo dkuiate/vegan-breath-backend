@@ -15,7 +15,7 @@ urlpatterns = [
     #path('api-auth/', include('rest_framework.urls')),
     #path('api/task/', todoapi_views.RecepeeList.as_view(), name='task-list'),
     #path('',include(router.urls)),
-    #path('auth/login/', obtain_jwt_token),
-    #path('auth/refresh-token/', refresh_jwt_token),
+    path('auth/login/', obtain_jwt_token),
+    path('auth/refresh-token/', refresh_jwt_token),
     path('api/vegan/', include('vegan.urls', namespace='vegan')),
 ]
