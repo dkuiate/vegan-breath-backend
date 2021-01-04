@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'todoapi',
+    'vegan',
     
 ]
 
@@ -153,5 +154,5 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': timedelta(days=2),
+    'JWT_EXPIRATION_DELTA': timedelta(days=1),
 }
