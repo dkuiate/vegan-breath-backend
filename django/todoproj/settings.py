@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'todoapi',
     'vegan',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth',
+    'rest_auth.registration',
     
 ]
 
@@ -158,3 +163,12 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': timedelta(days=1),
 }
+
+#allauth
+
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# JWT settings
+
+REST_USE_JWT = True
