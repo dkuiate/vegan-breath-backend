@@ -54,49 +54,89 @@ def createShop(request):
   return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 
-# Create your views here.
-def index(request):
-  
-  recettes = Recette.objects.filter().order_by('-created_at')[:4]
+#LastItem
+@api_view(['GET'])
+def lastShopList(request):
+  shops =   Shop.objects.filter().order_by('-created_at')[:4]
+  serializer = ShopSerializer(shops, many=True)
+  return Response(serializer.data, status = status.HTTP_200_OK) 
+
+@api_view(['GET'])
+def lastRestaurantList(request):
   restaurants = Restaurant.objects.filter().order_by('-created_at')[:4]
-  shops = Shop.objects.filter().order_by('-created_at')[:4]
+  serializer = RestaurantSerializer(restaurants, many=True)
+  return Response(serializer.data, status = status.HTTP_200_OK) 
 
-  formatted_recettes = ["{}".format(recette.title) for recette in recettes]
-  formatted_restaurants = ["{}".format(restaurant.title) for restaurant in restaurants]
-  formatted_shops = ["{}".format(shop.title) for shop in shops]
+@api_view(['GET'])
+def lastRecetteList(request):
+  recette = Recette.objects.filter().order_by('-created_at')[:4]
+  serializer = RecetteSerializer(recette, many=True)
+  return Response(serializer.data, status = status.HTTP_200_OK)
 
-  message = """{}<br>{}<br>{}""".format(formatted_recettes,formatted_restaurants ,formatted_shops)
-  context = {
+
+#Details
+@api_view(['GET'])
+def shopDetails(request,pk):
+  shops =   Shop.objects.get(id = pk)
+  serializer = ShopSerializer(shops, many=False)
+  return Response(serializer.data, status = status.HTTP_200_OK)
+
+@api_view(['GET'])
+def restaurantDetails(request,pk):
+  restaurants = Restaurant.objects.get(id = pk)
+  serializer = RestaurantSerializer(restaurants, many=False)
+  return Response(serializer.data, status = status.HTTP_200_OK) 
+
+@api_view(['GET'])
+def recetteDetails(request,pk):
+  recette = Recette.objects.get(id = pk)
+  serializer = RecetteSerializer(recette, many=False)
+  return Response(serializer.data, status = status.HTTP_200_OK)
+
+
+# Create your views here.
+#def index(request):
+  
+#  recettes = Recette.objects.filter().order_by('-created_at')[:4]
+#  restaurants = Restaurant.objects.filter().order_by('-created_at')[:4]
+#  shops = Shop.objects.filter().order_by('-created_at')[:4]
+
+#  formatted_recettes = ["{}".format(recette.title) for recette in recettes]
+#  formatted_restaurants = ["{}".format(restaurant.title) for restaurant in restaurants]
+#  formatted_shops = ["{}".format(shop.title) for shop in shops]
+
+#  message = """{}<br>{}<br>{}""".format(formatted_recettes,formatted_restaurants ,formatted_shops)
+# context = {
       #  'recette_list': recettes,
       # 'restaurant_list': restaurants,
       #  'shop_list': shops,
-  }
+#  }
 
-  return HttpResponse(message)
+#  return HttpResponse(message)
     #todo plus vue
 
 
 
 
-def listingRecette(request):
-  recettes = Recette.objects.all()
-  formatted_recettes = ["{}{}".format(recette.id,recette.title) for recette in recettes]
-  messageRecette = """{}""".format(formatted_recettes)
-  return HttpResponse(messageRecette)
+#def listingRecette(request):
+#  recettes = Recette.objects.all()
+#  formatted_recettes = ["{}{}".format(recette.id,recette.title) for recette in recettes]
+#  messageRecette = """{}""".format(formatted_recettes)
+#  return HttpResponse(messageRecette)
 
 
-def listingRestaurant(request):
-  restaurants = Restaurant.objects.all()
-  formatted_restaurants = ["{}".format(restaurant.title) for restaurant in restaurants]
-  messageResto = """{}""".format(formatted_restaurants)
-  return HttpResponse(messageResto)
+#def listingRestaurant(request):
+#  restaurants = Restaurant.objects.all()
+#  formatted_restaurants = ["{}".format(restaurant.title) for restaurant in restaurants]
+#  messageResto = """{}""".format(formatted_restaurants)
+#  return HttpResponse(messageResto)
 
 
-def listingShop(request):
-  shops = Shop.objects.all()
-  formatted_shops = ["{}".format(shop.title) for shop in shops]
-  messageShop = """{}""".format(formatted_shops)
-  return HttpResponse(messageShop)
+#def listingShop(request):
+#  shops = Shop.objects.all()
+#  formatted_shops = ["{}".format(shop.title) for shop in shops]
+#  messageShop = """{}""".format(formatted_shops)
+#  return HttpResponse(messageShop)
 
 
 
