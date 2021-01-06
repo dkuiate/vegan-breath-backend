@@ -26,7 +26,7 @@ SECRET_KEY = 'xs^ipoc=lpzy5(@gn_z0bg4t)92a6!r5c%f5^@_$djg=xj365^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '.localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', '.localhost', '127.0.0.1','vegan-breath.herokuapp.com']
 
 
 # Application definition
@@ -184,3 +184,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 # JWT settings
 
 REST_USE_JWT = True
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = ()
