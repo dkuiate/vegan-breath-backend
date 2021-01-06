@@ -91,13 +91,25 @@ WSGI_APPLICATION = 'todoproj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'postgres',
+#        'USER': 'postgres',
+#        'HOST': 'db',
+#        'PASSWORD': 'postgres',
+#        'PORT': 5432,
+#    }
+#}
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PASSWORD': 'postgres',
+        'NAME': 'dbi30eh9sc43hr',
+        'USER': 'xuwhzwdwoagsoj',
+        'HOST': 'ec2-54-78-127-245.eu-west-1.compute.amazonaws.com',
+        'PASSWORD': '7b2562d4252b2b8b69628605a0539696dfab50f23038f5c52c75c89cd3cb0dd0',
         'PORT': 5432,
     }
 }
