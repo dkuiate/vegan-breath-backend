@@ -1,3 +1,19 @@
-from django.test import TestCase
+import json
+from django.urls import reverse
+from rest_framework.authtoken.models import Token
+from rest_framework.test import APIClient
+from rest_framework import status
 
-# Create your tests here.
+
+class testShop(APIClient):
+    client = APIClient()
+    #GET
+    def test_restaurantList(self):
+        
+
+class testRestaurant(APIClient):
+
+class testRecette(APIClient):
+
+
+

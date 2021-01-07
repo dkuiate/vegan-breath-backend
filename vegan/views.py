@@ -2,7 +2,7 @@
 from rest_framework.response import Response
 from .serializers import RecetteSerializer, RestaurantSerializer,ShopSerializer
 from .models import Contact, Recette, Restaurant, Shop
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework import status
 from django.http import HttpResponse
 
@@ -56,18 +56,24 @@ def createShop(request):
 
 #LastItem
 @api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def lastShopList(request):
   shops =   Shop.objects.filter().order_by('-created_at')[:4]
   serializer = ShopSerializer(shops, many=True)
   return Response(serializer.data, status = status.HTTP_200_OK) 
 
 @api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def lastRestaurantList(request):
   restaurants = Restaurant.objects.filter().order_by('-created_at')[:4]
   serializer = RestaurantSerializer(restaurants, many=True)
   return Response(serializer.data, status = status.HTTP_200_OK) 
 
 @api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
 def lastRecetteList(request):
   recette = Recette.objects.filter().order_by('-created_at')[:4]
   serializer = RecetteSerializer(recette, many=True)

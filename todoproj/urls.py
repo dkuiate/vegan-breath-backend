@@ -5,6 +5,7 @@ from todoapi.views import ShopItemView
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 from todoapi import views as todoapi_views
+from . import views
 
 #router = routers.DefaultRouter()
 #router.register(
@@ -12,6 +13,7 @@ from todoapi import views as todoapi_views
 #)
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home),
     #path('api-auth/', include('rest_framework.urls')),
     #path('api/task/', todoapi_views.RecepeeList.as_view(), name='task-list'),
     #path('',include(router.urls)),
